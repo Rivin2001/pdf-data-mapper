@@ -1,0 +1,1 @@
+{"ast":null,"code":"module.exports = (worker, handler) => {\n  worker.onmessage = ({\n    data\n  }) => {\n    // eslint-disable-line\n    handler(data);\n  };\n};","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

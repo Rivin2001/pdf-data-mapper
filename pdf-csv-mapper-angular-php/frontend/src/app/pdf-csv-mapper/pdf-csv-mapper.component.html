@@ -1,0 +1,79 @@
+<form>
+  <div class="container">
+    <div class="header">
+      <h1>PDF to CSV Mapper</h1>
+      <p>Upload a PDF and CSV template to extract and map data</p>
+    </div>
+
+    <div class="status-message" [ngClass]="statusType" *ngIf="statusMessage">{{ statusMessage }}</div>
+
+    <div class="upload-section">
+      <div class="upload-card">
+        <h2>Upload PDF File</h2>
+        <p>Select the PDF document you want to extract data from</p>
+        <input type="file" id="pdfFile" class="file-input" accept=".pdf" (change)="onPdfSelected($event)">
+        <label for="pdfFile" class="upload-btn">Choose PDF</label>
+        <div class="file-name">{{ pdfFileName || 'No file selected' }}</div>
+        <div class="progress-bar" *ngIf="showPdfProgress">
+          <div class="progress" [style.width.%]="pdfProgress"></div>
+        </div>
+      </div>
+
+      <div class="upload-card">
+        <h2>Upload CSV/Excel File</h2>
+        <p>Select the CSV or Excel file with headers you want to map to</p>
+        <input type="file" id="csvFile" class="file-input" accept=".csv,.xlsx,.xls" (change)="onCsvSelected($event)">
+        <label for="csvFile" class="upload-btn">Choose CSV/Excel</label>
+        <div class="file-name">{{ csvFileName || 'No file selected' }}</div>
+      </div>
+    </div>
+
+    <div class="document-preview-section" [class.has-data]="documentHasData">
+      <div class="document-preview" [class.has-pdf]="pageImages.length > 0">
+        <h3>PDF Preview</h3>
+        <div class="preview-content">
+          <img *ngFor="let src of pageImages" [src]="src" />
+        </div>
+      </div>
+
+      <div class="document-preview" [class.has-csv]="csvPreviewHeaders.length > 0">
+        <h3>CSV Preview</h3>
+        <div class="preview-content" id="csvPreviewContent">
+          <table *ngIf="csvPreviewHeaders.length > 0">
+            <thead>
+              <tr>
+                <th *ngFor="let h of csvPreviewHeaders">{{ h }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of csvPreviewRows">
+                <td *ngFor="let c of row">{{ c }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-section" [class.active]="mappedData.length > 0">
+      <div class="preview-header">
+        <h2>Mapped Data Preview</h2>
+        <button class="download-btn" (click)="downloadExcel()" [disabled]="mappedData.length === 0">Download Data as Excel Sheet</button>
+      </div>
+      <div class="table-container">
+        <table id="previewTable">
+          <thead>
+            <tr>
+              <th *ngFor="let md of mappedData">{{ md.header }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td *ngFor="let md of mappedData">{{ md.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</form>

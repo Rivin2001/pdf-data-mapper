@@ -1,0 +1,1 @@
+{"ast":null,"code":"module.exports = {\n  /*\n   * Use BlobURL for worker script by default\n   * TODO: remove this option\n   *\n   */\n  workerBlobURL: true,\n  logger: () => {}\n};","map":null,"metadata":{},"sourceType":"script","externalDependencies":[]}

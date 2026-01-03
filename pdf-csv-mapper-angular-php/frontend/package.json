@@ -1,0 +1,35 @@
+{
+  "name": "pdf-csv-mapper",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --open",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development"
+  },
+  "dependencies": {
+    "@angular/animations": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "papaparse": "^5.4.1",
+    "pdfjs-dist": "2.12.313",
+    "rxjs": "~7.8.1",
+    "tesseract.js": "^5.0.5",
+    "tslib": "^2.8.1",
+    "xlsx": "^0.18.5",
+    "zone.js": "^0.14.10"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.6",
+    "@angular/cli": "^17.3.6",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/node": "^20.11.30",
+    "typescript": "~5.2.2"
+  }
+}
